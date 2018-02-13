@@ -291,7 +291,9 @@ const SPRITE_DEFS = {
   'transit--transit-shelter-01-left': { id: 'transit--transit-shelter-01-left', width: 9, offsetY: -1.3 },
   'transit--transit-shelter-01-right': { id: 'transit--transit-shelter-01-right', width: 9, offsetY: -1.3 },
   'transit--transit-shelter-02-left': { id: 'transit--transit-shelter-02-left', width: 9, offsetY: -3.8 },
-  'transit--transit-shelter-02-right': { id: 'transit--transit-shelter-02-right', width: 9, offsetY: -3.8 }
+  'transit--transit-shelter-02-right': { id: 'transit--transit-shelter-02-right', width: 9, offsetY: -3.8 },
+
+  'flex-test-1': { id: '/images/flex-test-1.svg', width: 9, offsetY: 2.25 }
 }
 
 export const SEGMENT_INFO = {
@@ -572,6 +574,7 @@ export const SEGMENT_INFO = {
         minWidth: 7,
         maxWidth: 10,
         graphics: {
+          left: 'flex-test-1',
           repeat: 'ground--asphalt',
           right: 'markings--lane-right'
         }
