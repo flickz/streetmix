@@ -195,7 +195,9 @@ export function getSpriteDef (sprite) {
   if (typeof sprite === 'object' && sprite.id) {
     def = Object.assign({}, SPRITE_DEFS[sprite.id], sprite)
   } else {
-    def = SPRITE_DEFS[sprite]
+    // Clone the original to prevent downstream consumers from accidentally
+    // modifying the reference
+    def = Object.assign({}, SPRITE_DEFS[sprite])
   }
   return def
 }
