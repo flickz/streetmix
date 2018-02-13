@@ -39,6 +39,9 @@
         ]
       }
     },
+    "flex-zone": {
+      "name": "Flex zone"
+    },
     "divider": {
       "name": "Buffer",
       "details": {

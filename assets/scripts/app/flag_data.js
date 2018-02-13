@@ -32,7 +32,7 @@ export const FEATURE_FLAGS = {
   SEGMENT_FLEX_ZONE: {
     label: 'Segment — flex zone',
     defaultValue: false,
-    disabled: true
+    disabled: false
   },
   SEGMENT_INCEPTION_TRAIN: {
     label: 'Segment — the train from “Inception”',

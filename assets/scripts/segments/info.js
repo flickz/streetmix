@@ -3,6 +3,7 @@ export const SEGMENT_OWNER_BIKE = 'bike'
 export const SEGMENT_OWNER_PEDESTRIAN = 'pedestrian'
 export const SEGMENT_OWNER_PUBLIC_TRANSIT = 'public-transit'
 const SEGMENT_OWNER_NATURE = 'nature'
+const SEGMENT_OWNER_FLEX = 'flex'
 
 /*
 Segment info documentation
@@ -556,6 +557,31 @@ export const SEGMENT_INFO = {
         graphics: {
           right: 'parklet--yerba-buena-parklet-right-v02',
           repeat: 'ground--asphalt'
+        }
+      }
+    }
+  },
+  'flex-zone': {
+    name: 'Flex zone',
+    owner: SEGMENT_OWNER_FLEX,
+    zIndex: 2,
+    defaultWidth: 7,
+    variants: ['orientation'],
+    details: {
+      'left': {
+        minWidth: 7,
+        maxWidth: 10,
+        graphics: {
+          repeat: 'ground--asphalt',
+          right: 'markings--lane-right'
+        }
+      },
+      'right': {
+        minWidth: 7,
+        maxWidth: 10,
+        graphics: {
+          repeat: 'ground--asphalt',
+          left: 'markings--lane-left'
         }
       }
     }
