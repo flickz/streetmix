@@ -200,6 +200,10 @@ app.post(
   resources.services.post_deploy.post
 )
 
+app.get('/admin', function (req, res) {
+  res.render('admin', {})
+})
+
 app.use(express.static(path.join(__dirname, '/public')))
 
 // Catch-all
