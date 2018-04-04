@@ -165,6 +165,8 @@ app.post('/api/v1/feedback', resources.v1.feedback.post)
 
 app.get('/api/v1/translate/:locale_code/:resource_name', resources.v1.translate.get)
 
+app.post('/api/v1/admin', resources.v1.admin.post)
+
 app.get('/.well-known/status', resources.well_known_status.get)
 
 // Process stylesheets via Sass and PostCSS / Autoprefixer
