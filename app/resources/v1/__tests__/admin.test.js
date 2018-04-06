@@ -7,12 +7,12 @@ const user = {
   validInfo: {
     fullName: 'Oluwaseun Omoyajowo',
     email: 'omoyajowo2015@gmail.com',
-    dateOfBirth: '2012-12-12'
+    birthDate: '2012-12-12'
   },
   invalidInfo: {
     fullName: 'Oluwaseun Omoyajowo',
     email: 'oluwaseungmail.com',
-    dateOfBirth: '2012-12-12'
+    birthDate: '2012-12-12'
   }
 }
 
