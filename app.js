@@ -186,6 +186,15 @@ app.get('/assets/scripts/main.js', browserify(path.join(__dirname, '/assets/scri
   })]
 }))
 
+app.get('/assets/scripts/admin.js', browserify(path.join(__dirname, '/assets/scripts/admin.js'), {
+  cache: true,
+  precompile: true,
+  extensions: [ '.jsx' ],
+  transform: [babelify, envify({
+    API_URL: config.get('restapi_proxy_baseuri_rel')
+  })]
+}))
+
 // SVG bundled images served directly from packages
 app.get('/assets/images/icons.svg', function (req, res) {
   res.sendFile(path.join(__dirname, '/node_modules/@streetmix/icons/dist/icons.svg'))
