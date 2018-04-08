@@ -2,15 +2,14 @@ import React from 'react'
 
 import Form from './Form'
 import Feedback from './Feedback'
-import { STATUS_CODES } from './statusCodes'
-
+import { STATUS } from './status'
 import { validateDataFromServer } from './xhr'
 
 class App extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      statusCode: STATUS_CODES.NO_FEEDBACK
+      statusCode: STATUS.NO_FEEDBACK.code
     }
   }
   showFeedback = (response) => {
@@ -22,13 +21,23 @@ class App extends React.Component {
     validateDataFromServer(data)
       .then(this.showFeedback)
   }
+  handleReset = () => {
+    this.setState({
+      statusCode: STATUS.NO_FEEDBACK.code
+    })
+  }
   render () {
     const statusCode = this.state.statusCode
+    const showFeedback = () => {
+      if (statusCode !== STATUS.NO_FEEDBACK.code) {
+        return <Feedback statusCode={statusCode} />
+      }
+    }
     return (
-      <div>
+      <div className="content-wrapper">
         <h1>Streetmix Admin</h1>
-        <Feedback statusCode={statusCode} />
-        <Form onSubmit={this.handleFormSubmission} />
+        {showFeedback()}
+        <Form onReset={this.handleReset} onSubmit={this.handleFormSubmission} />
       </div>
     )
   }

@@ -4,6 +4,7 @@ import { shallow, mount } from 'enzyme'
 import Form from '../Form'
 
 const onSubmit = jest.fn()
+const onReset = jest.fn()
 
 const userInfo = {
   fullName: 'Oluwaseun omoyajowo',
@@ -23,23 +24,34 @@ const birthDateInputEvent = {
 
 describe('Form', () => {
   it('render form without crashing', () => {
-    const wrapper = shallow(<Form onSubmit={onSubmit} />)
+    const wrapper = shallow(<Form onReset={onReset} onSubmit={onSubmit} />)
     expect(wrapper.find('form').children().length).toEqual(4)
     expect(wrapper.state().fullName).toEqual('')
     expect(wrapper.state().email).toEqual('')
     expect(wrapper.state().birthDate).toEqual('')
   })
-
   it('should submit form', () => {
-    const form = mount(<Form onSubmit={onSubmit} />)
-    form.find('[name="fullName"]').simulate('change', fullNameInputEvent)
-    form.find('[name="email"]').simulate('change', emailInputEvent)
-    form.find('[name="birthDate"]').simulate('change', birthDateInputEvent)
-    form.find('form').simulate('submit', { preventDefault: jest.fn() })
+    const wrapper = mount(<Form onReset={onReset} onSubmit={onSubmit} />)
+    wrapper.find('[name="fullName"]').simulate('change', fullNameInputEvent)
+    wrapper.find('[name="email"]').simulate('change', emailInputEvent)
+    wrapper.find('[name="birthDate"]').simulate('change', birthDateInputEvent)
+    wrapper.find('form').simulate('submit', { preventDefault: jest.fn() })
 
-    expect(form.state().fullName).toEqual(userInfo.fullName)
-    expect(form.state().email).toEqual(userInfo.email)
-    expect(form.state().birthDate).toEqual(userInfo.birthDate)
-    expect(form.props().onSubmit).toBeCalled()
+    expect(wrapper.state().fullName).toEqual(userInfo.fullName)
+    expect(wrapper.state().email).toEqual(userInfo.email)
+    expect(wrapper.state().birthDate).toEqual(userInfo.birthDate)
+    expect(wrapper.props().onSubmit).toBeCalled()
+  })
+  it('should reset form', () => {
+    const wrapper = mount(<Form onReset={onReset} onSubmit={onSubmit} />)
+    wrapper.find('[name="fullName"]').simulate('change', fullNameInputEvent)
+    wrapper.find('[name="email"]').simulate('change', emailInputEvent)
+    wrapper.find('[name="birthDate"]').simulate('change', birthDateInputEvent)
+    wrapper.find('[type="button"]').simulate('click')
+
+    expect(wrapper.state().fullName).toEqual('')
+    expect(wrapper.state().email).toEqual('')
+    expect(wrapper.state().birthDate).toEqual('')
+    expect(wrapper.props().onReset).toBeCalled()
   })
 })

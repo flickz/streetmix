@@ -2,12 +2,12 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import App from '../App'
-import { STATUS_CODES } from '../statusCodes'
+import { STATUS } from '../status'
 
 describe('App', () => {
   it('renders without crashing', () => {
     const wrapper = shallow(<App />)
-    expect(wrapper.children().length).toEqual(3)
-    expect(wrapper.state().statusCode).toEqual(STATUS_CODES.NO_FEEDBACK)
+    expect(wrapper.children().length).toEqual(2)
+    expect(wrapper.state().statusCode).toEqual(STATUS.NO_FEEDBACK.code)
   })
 })
