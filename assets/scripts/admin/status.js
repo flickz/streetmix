@@ -5,7 +5,7 @@ export const STATUS = {
   },
   BAD_REQUEST_ERROR: {
     code: 400,
-    message: 'Oops! Invalid email or date of birth'
+    message: 'Oops! Please enter a valid email and date of birth'
   },
   SERVER_ERROR: {
     code: 500,
