@@ -167,7 +167,7 @@ app.get('/api/v1/translate/:locale_code/:resource_name', resources.v1.translate.
 
 app.post('/api/v1/admin', resources.v1.admin.post)
 // Handles any attempt to access admin api from the browser
-app.use('/api/v1/admin', function (req, res) {
+app.get('/api/v1/admin', function (req, res) {
   res.status(400).send('Bad Request, you can\'t access from browser')
 })
 
